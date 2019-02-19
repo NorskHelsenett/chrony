@@ -29,6 +29,7 @@ class chrony (
   String $config_file_mode,
   Stdlib::Absolutepath $driftfile,
   Stdlib::Absolutepath $keyfile,
+  Optional[String] $makestep,
   String $package_ensure,
   Boolean $package_manage,
   String $package_name,
