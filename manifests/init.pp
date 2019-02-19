@@ -16,10 +16,7 @@
 # @param package_ensure [String] What state to ensure the package is in. Values: 'present', 'latest', or a specific version. Default value: present.
 # @param package_manage [Boolean] Whether or not Puppet should manage the state of the chrony package. Default value: true.
 # @param package_name [String] What name to use for the chrony package. Default value: chrony.
-# @param pool_use [Boolean] Whether or not to use a pool as the source to synchronize from. Default value: true.
 # @param pool_address [String] What address to use for the server pool. Default value: pool.ntp.org.
-# @param pool_maxservers [Integer[1]] How many servers to grab from the pool. Default value: 4.
-# @param pool_iburst [Boolean] Whether or not to set the iburst option on the pool. Default value: true.
 # @param rtsync [Boolean]
 # @param servers [Array[String]] Array of servers to set as sources. Used only if pool_use is false. Default value: empty array.
 # @param service_enable [Boolean] Whether or not the service should be set to run on startup. Default value: true.
@@ -41,12 +38,10 @@ class chrony (
   String $package_ensure,
   Boolean $package_manage,
   String $package_name,
-  Boolean $pool_use,
   String $pool_address,
-  Integer[1] $pool_maxservers,
   Boolean $pool_iburst,
-  Optional Boolean $rtsync,
-  Array[String] $servers,
+  Optional[Boolean] $rtsync,
+  Optional[Array[String]] $servers,
   Boolean $service_enable,
   String $service_ensure,
   Boolean $service_manage,

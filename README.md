@@ -83,12 +83,8 @@ Required if client_allow is set to true.
 **package_ensure**: String, sets the "ensure" parameter on the package resource for chrony.  
 **package_manage**: Boolean, sets whether or not Puppet will manage the chrony package.  
 **package_name**: String, specifies the name of the chrony package.  
-**pool_use**: Boolean, sets whether or not to use a "pool" directive in chrony.conf.  
-**pool_address**: String, the address of the NTP pool to use.  
-**pool_maxservers**: Integer, the number of sources to pull from the pool.  
-**pool_iburst**: Boolean, specifies whether or not to set the iburst on the pool.  
-**servers**: Array[String], specifies the list of servers to sync time from.
-Required if pool_use is set to false.  
+**pool_address**: String, the address of the NTP pool to use and its options. Used instead of servers if set.  
+**servers**: Array[String], specifies the list of servers to sync time from. Must be set if pool_address is not set.
 **service_enable**: Boolean, whether to enable the chrony service to run at startup.  
 **service_ensure**: String, sets the "ensure" parameter on the service resource for chrony.  
 **service_manage**: Boolean, whether or not Puppet should manage the chrony service.  

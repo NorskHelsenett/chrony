@@ -12,15 +12,12 @@ chrony::makestep: '1 3'
 chrony::package_ensure: 'present'
 chrony::package_manage: true
 chrony::package_name: 'chrony'
-chrony::pool_use: true
-chrony::pool_address: 'pool.ntp.org'
-chrony::pool_maxservers: 4
-chrony::pool_iburst: true
+chrony::pool_address: 'pool.ntp.org iburst maxsources 4'
 chrony::servers:
-  - '0.pool.ntp.org'
-  - '1.pool.ntp.org'
-  - '2.pool.ntp.org'
-  - '3.pool.ntp.org'
+  - '0.pool.ntp.org iburst'
+  - '1.pool.ntp.org iburst'
+  - '2.pool.ntp.org iburst'
+  - '3.pool.ntp.org iburst'
 chrony::service_enable: true
 chrony::service_ensure: 'running'
 chrony::service_manage: true

@@ -1,2 +1,2 @@
 ---
-chrony::pool_address: 'ubuntu.pool.ntp.org'
+chrony::pool_address: 'ubuntu.pool.ntp.org iburst maxsources 4'
