@@ -12,8 +12,8 @@ server <%= server %> iburst
 
 # Driftfile location
 driftfile <%= scope['chrony::driftfile'] %>
-<% if scope['chrony::client_allow'] -%>
 
+<% if scope['chrony::client_allow'] -%>
 # Set which networks/hosts are allowed to connect to chrony
 <% scope['chrony::client_sources'].each do |client_source| -%>
 allow <%= client_source %>
@@ -33,7 +33,9 @@ keyfile <%= scope['chrony::keyfile'] %>
 
 # This directive forces `chronyd' to send a message to syslog if it
 # makes a system clock adjustment larger than a threshold value in seconds.
-logchange 0.5
+<% if scope['chrony::logchange'] -%>
+logchange <%= scope['chrony::logchange'] %>
+<% end -%>
 
 # An example of the use of this directive is
 # makestep 0.1 10
@@ -44,11 +46,15 @@ makestep <%= scope['chrony::makestep'] %>
 
 # This directive enables kernel synchronisation (every 11 minutes) of the
 # real-time clock. Note that it can't be used along with the 'rtcfile' directive.
+<% if scope['chrony::rtsync'] -%>
 rtcsync
+<% end -%>
 
 # Comment this line out to turn off logging.
 log tracking measurements statistics
-logdir /var/log/chrony
+<% if scope['chrony::logdir'] -%>
+logdir <%= scope['chrony::logdir'] %>
+<% end -%>
 
 # Stop bad estimates upsetting machine clock.
 maxupdateskew 100.0
@@ -58,3 +64,10 @@ dumponexit
 
 # Specify directory for dumping measurements.
 dumpdir /var/lib/chrony
+
+# Extra options
+<% if scope['chrony::extra_options'] -%>
+<% scope['chrony::extra_options'].each do |option| -%>
+<%= option %>
+<% end -%>
+<% end -%>

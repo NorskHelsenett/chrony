@@ -76,7 +76,9 @@ Required if client_allow is set to true.
 **config**: String, specifies the location of the config file.  
 **config_file_mode**: String, specifies the access mode to set on the config file.  
 **driftfile**: String, specifies the location for the driftfile.  
-**keyfile**: String, specifies path to the keyfile used to authenticate access to chrony.  
+**extra_options**: Array[String], a list of strings to be used as additional options not explicitly handled.
+**keyfile**: String, specifies path to the keyfile used to authenticate access to chrony.
+**logchange**: Numeric, specifies the limit above which chrony logs when changes are made on time corrections.
 **makestep**: String, specifies if chrony should step time if drift is above threshold.
 **package_ensure**: String, sets the "ensure" parameter on the package resource for chrony.  
 **package_manage**: Boolean, sets whether or not Puppet will manage the chrony package.  
