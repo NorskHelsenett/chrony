@@ -35,6 +35,13 @@ keyfile <%= scope['chrony::keyfile'] %>
 # makes a system clock adjustment larger than a threshold value in seconds.
 logchange 0.5
 
+# An example of the use of this directive is
+# makestep 0.1 10
+# This would step system clock if the adjustment is larger than 0.1 seconds, but only in the first ten clock updates.
+<% if scope['chrony::makestep'] -%>
+makestep <%= scope['chrony::makestep'] %>
+<% end -%>
+
 # This directive enables kernel synchronisation (every 11 minutes) of the
 # real-time clock. Note that it can't be used along with the 'rtcfile' directive.
 rtcsync
